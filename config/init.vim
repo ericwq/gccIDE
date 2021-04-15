@@ -15,11 +15,12 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'tag': '0.25.0' }
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-source $HOME/.config/nvim/plug-config/neo.vim
-source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/others.vim
+source $HOME/.config/nvim/config/neo.vim
+source $HOME/.config/nvim/config/coc.vim
+source $HOME/.config/nvim/config/others.vim

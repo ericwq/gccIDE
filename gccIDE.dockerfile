@@ -26,8 +26,9 @@ COPY --from=cclsBuild /usr/local/bin/ccls /usr/local/bin/ccls
 #   python3 for coc python provider
 #   nodejs-current and npm for noodejs provider
 RUN apk add --no-cache \
-	gcc \
 	g++ \
+	musl-dev \
+	cmake \
 	make \
 	llvm \
 	colordiff \
@@ -60,7 +61,7 @@ WORKDIR $HOME
 # Prepare for the nvim
 RUN mkdir -p $HOME/.config/nvim/ && \
 	mkdir -p $HOME/.config/nvim/plugged && \
-	mkdir -p $HOME/.config/nvim/plug-config && \
+	mkdir -p $HOME/.config/nvim/config && \
 	mkdir -p $HOME/.config/coc/extensions
 
 # Install vim-plug
@@ -79,9 +80,9 @@ RUN nvim --headless -c 'PlugInstall' -c qall
 COPY --chown=ide:develop ./config/init.vim 		$HOME/.config/nvim/init.vim
 
 # Prepare the coc, and others config file
-COPY --chown=ide:develop ./config/neo.vim 		$HOME/.config/nvim/plug-config/neo.vim
-COPY --chown=ide:develop ./config/coc.vim 		$HOME/.config/nvim/plug-config/coc.vim
-COPY --chown=ide:develop ./config/others.vim 		$HOME/.config/nvim/plug-config/others.vim
+COPY --chown=ide:develop ./config/neo.vim 		$HOME/.config/nvim/config/neo.vim
+COPY --chown=ide:develop ./config/coc.vim 		$HOME/.config/nvim/config/coc.vim
+COPY --chown=ide:develop ./config/others.vim 		$HOME/.config/nvim/config/others.vim
 
 # Prepare the coc-settings.json and package.json
 COPY --chown=ide:develop ./config/package.json 		$HOME/.config/coc/extensions/package.json
@@ -89,9 +90,9 @@ COPY --chown=ide:develop ./config/coc-settings.json 	$HOME/.config/nvim/coc-sett
 
 
 USER root
-RUN 	apk add --no-cache --virtual .build-deps python3-dev g++ musl-dev \
+RUN 	apk add --no-cache --virtual .build-deps python3-dev \
 # Install neovim python provider pynvim
-	&& su  ide -c 'pip3 install pynvim' \
+	&& su  ide -c 'pip3 install pynvim cpplint' \
 	&& apk del --no-network .build-deps
 USER ide:develop
 
