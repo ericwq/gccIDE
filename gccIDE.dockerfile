@@ -70,16 +70,16 @@ WORKDIR $HOME
 RUN sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-## Copy the init.vim 
+# Copy the init.vim WITHOUT other source of *.vim
 COPY --chown=ide:develop ./config/init0.vim 		$HOME/.config/nvim/init.vim
 
 # Install all the vim-plug plugins
 RUN nvim --headless -c 'PlugInstall' -c qall
 
-## Copy the init.vim 
+# Copy the init.vim WITH other source of *.vim
 COPY --chown=ide:develop ./config/init.vim 		$HOME/.config/nvim/init.vim
 
-# Prepare the coc, and others config file
+# Prepare the neo, coc, and others source file
 COPY --chown=ide:develop ./config/neo.vim 		$HOME/.config/nvim/config/neo.vim
 COPY --chown=ide:develop ./config/coc.vim 		$HOME/.config/nvim/config/coc.vim
 COPY --chown=ide:develop ./config/others.vim 		$HOME/.config/nvim/config/others.vim
@@ -91,12 +91,12 @@ COPY --chown=ide:develop ./config/coc-settings.json 	$HOME/.config/nvim/coc-sett
 
 USER root
 RUN 	apk add --no-cache --virtual .build-deps python3-dev \
-# Install neovim python provider pynvim
+# Install neovim python provider pynvim and cpplint
 	&& su  ide -c 'pip3 install pynvim cpplint' \
 	&& apk del --no-network .build-deps
 USER ide:develop
 
-# Install COC extension: coc-json coc-snippets
+# Install COC extension:
 WORKDIR  $HOME/.config/coc/extensions
 RUN nvim --headless -c 'CocInstall -sync coc-json coc-snippets coc-pairs coc-markdownlint' -c qall &&\
 	npm cache clean --force
