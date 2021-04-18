@@ -4,26 +4,6 @@ A neovim based GCC/G++ IDE, based on [alpine](https://www.alpinelinux.org/) linu
 
 For me [golangIDE](https://github.com/ericwq/golangIDE) is a good development environment for go language. I still need a c/c++ language development environment.
 
-```sh
-% docker pull ericwq057/gccide:latest
-
-% docker run -it -d -h gccide  --env TZ=Asia/Shanghai  --name gcc \
-  --mount source=proj-vol,target=/home/ide/proj \
-  --mount type=bind,source=YOUR-SHARED-DIRECTORY,target=/home/ide/develop \
-  gccide:latest
-
-$ docker exec -u ide -it gcc bash
-```
-
-- `YOUR-SHARED-DIRECTORY` is you local source code directory shared with native OS. E.g. "/Users/qiwang/dev".
-- You may need to create a docker volume `proj-vol` first:
-
-```sh
-% docker volume create proj-vol
-```
-
-- `proj-vol` is also your source code directory, which you don't need to access from native OS. It's faster comparing with shared one.
-
 ## Feature
 
 - [neovim](https://neovim.io) - Vim-fork focused on extensibility and agility.
@@ -55,9 +35,27 @@ $ docker exec -u ide -it gcc bash
 
 Please suggest any software which deserved to be integrated into this IDE.
 
-## Guide
+## Quick guide
 
-- Working on it.
+```sh
+% docker pull ericwq057/gccide:latest
+
+% docker run -it -d -h gccide  --env TZ=Asia/Shanghai  --name gcc \
+  --mount source=proj-vol,target=/home/ide/proj \
+  --mount type=bind,source=YOUR-SHARED-DIRECTORY,target=/home/ide/develop \
+  gccide:latest
+
+$ docker exec -u ide -it gcc bash
+```
+
+- `YOUR-SHARED-DIRECTORY` is you local source code directory shared with native OS. E.g. "/Users/qiwang/dev".
+- You may need to create a docker volume `proj-vol` first:
+
+```sh
+% docker volume create proj-vol
+```
+
+- `proj-vol` is also your source code directory, which you don't need to access from native OS. It's faster comparing with shared one.
 
 ## Reference
 
@@ -65,6 +63,8 @@ Please suggest any software which deserved to be integrated into this IDE.
 - [Configure coc.nvim for C/C++ Development](https://ianding.io/2019/07/29/configure-coc-nvim-for-c-c++-development/)
 
 ## Status
+
+- Working on detail guide.
 
 Waiting for the real project verification. Currently try to figure out how to perform [ccls](https://github.com/MaskRay/ccls/wiki/Project-Setup#ccls-file) project setup. Try to verifiy it with the following projects:
 
