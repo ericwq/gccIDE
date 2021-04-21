@@ -26,16 +26,12 @@ COPY --from=cclsBuild /usr/local/bin/ccls /usr/local/bin/ccls
 #   python3 for coc python provider
 #   nodejs-current and npm for noodejs provider
 RUN apk add --no-cache \
-	g++ \
-	musl-dev \
+	alpine-sdk \
 	cmake \
-	make \
 	llvm \
 	colordiff \
         bash \
         neovim \
-        git \
-        curl \
         ctags \
         nodejs-current \
         npm \
