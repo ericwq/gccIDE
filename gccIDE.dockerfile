@@ -1,15 +1,15 @@
-FROM alpine:3.13 AS cclsBuild
-LABEL maintainer="ericwq057@qq.com"
+# FROM alpine:3.13 AS cclsBuild
+# LABEL maintainer="ericwq057@qq.com"
 
 # download and compile ccls
 #
 # https://github.com/MaskRay/ccls/wiki/Build#system-specific-notes
 #
-RUN apk add alpine-sdk cmake make clang clang-static clang-dev llvm-dev llvm-static \
-	&& git clone --depth=1 --recursive https://github.com/MaskRay/ccls \
-	&& cd ccls \
-	&& cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release \
-	&& cmake --build Release --target install
+#RUN apk add alpine-sdk cmake make clang clang-static clang-dev llvm-dev llvm-static \
+#	&& git clone --depth=1 --recursive https://github.com/MaskRay/ccls \
+#	&& cd ccls \
+#	&& cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release \
+#       && cmake --build Release --target install
 
 
 FROM alpine:3.13
@@ -17,7 +17,18 @@ LABEL maintainer="ericwq057@qq.com"
 
 # fetch the ccls binanry from the previous build stage
 #
-COPY --from=cclsBuild /usr/local/bin/ccls /usr/local/bin/ccls
+#COPY --from=cclsBuild /usr/local/bin/ccls /usr/local/bin/ccls
+
+# download and compile ccls
+#
+# https://github.com/MaskRay/ccls/wiki/Build#system-specific-notes
+#
+# keep all these package: generate compile_commands.json need it.
+RUN apk add alpine-sdk cmake make clang clang-static clang-dev llvm-dev llvm-static \
+	&& git clone --depth=1 --recursive https://github.com/MaskRay/ccls \
+	&& cd ccls \
+	&& cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release \
+	&& cmake --build Release --target install
 
 # This is the runtime package it contains
 # base: bash colordiff git curl neovim tzdata htop
@@ -26,9 +37,6 @@ COPY --from=cclsBuild /usr/local/bin/ccls /usr/local/bin/ccls
 #   python3 for coc python provider
 #   nodejs-current and npm for noodejs provider
 RUN apk add --no-cache \
-	alpine-sdk \
-	cmake \
-	llvm \
 	colordiff \
         bash \
         neovim \
