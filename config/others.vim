@@ -75,3 +75,8 @@ let g:syntastic_check_on_wq = 0
 " https://github.com/tpope/vim-markdown
 let g:markdown_fenced_languages = ['javascript', 'html', 'bash=sh']
 let g:markdown_minlines = 100
+
+" To get correct comment highlighting,
+" https://github.com/neoclide/coc.nvim/wiki/Using-the-configuration-file#default-coc-preferences
+"
+autocmd FileType json syntax match Comment +\/\/.\+$+
