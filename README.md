@@ -68,6 +68,6 @@ $ docker exec -u ide -it gcc bash
 
 Waiting for the real project verification. Currently try to figure out how to perform [ccls](https://github.com/MaskRay/ccls/wiki/Project-Setup#ccls-file) project setup. Try to verifiy it with the following projects:
 
+- [ccls](https://github.com/MaskRay/ccls) c project.
 - [grpc/grpc](https://github.com/grpc/grpc) c/c++ project.
 - [martinezjavier/ldd3](https://github.com/martinezjavier/ldd3) c project.
-- [linux kernel](https://www.kernel.org/) c project. I hope so.
