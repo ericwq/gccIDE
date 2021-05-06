@@ -32,12 +32,14 @@ RUN apk add alpine-sdk cmake make clang clang-static clang-dev llvm-dev llvm-sta
 
 # This is the runtime package it contains
 # base: bash colordiff git curl neovim tzdata htop
+# bear: is a tool that can generates a compilation databas
 #
 # for neovim environment: 
 #   python3 for coc python provider
 #   nodejs-current and npm for noodejs provider
 RUN apk add --no-cache \
 	colordiff \
+	bear \
         bash \
         neovim \
         ctags \
@@ -91,6 +93,9 @@ COPY --chown=ide:develop ./config/others.vim 		$HOME/.config/nvim/config/others.
 # Prepare the coc-settings.json and package.json
 COPY --chown=ide:develop ./config/package.json 		$HOME/.config/coc/extensions/package.json
 COPY --chown=ide:develop ./config/coc-settings.json 	$HOME/.config/nvim/coc-settings.json
+
+# backup coc-settings for clangd
+COPY --chown=ide:develop ./config/coc-settings.json.clangd 	$HOME/.config/nvim/coc-settings.json.clangd
 
 
 USER root

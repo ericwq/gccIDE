@@ -6,15 +6,20 @@ For me [golangIDE](https://github.com/ericwq/golangIDE) is a good development en
 
 ## Feature
 
+Both GCC and CLANG is ready for use. The default compiler is GCC. Both clangd and ccls is ready. The default language server is ccls. If you prefers clangd, please refer to [switch clangd](../../wiki/switch-clangd).
+
 - [neovim](https://neovim.io) - Vim-fork focused on extensibility and agility.
 - [g++](https://gcc.gnu.org) - GNU C++ standard library and compiler.
 - [gcc](https://gcc.gnu.org) - The GNU Compiler Collection.
+- [clang](https://llvm.org/) - A C language family front-end for LLVM.
 - [make](https://www.gnu.org/software/make) - GNU make utility to maintain groups of programs
 - [cmake](https://www.cmake.org/) - Cross-platform, open-source make system.
+- [bear](https://github.com/rizsotto/Bear) - Bear is a tool that generates a compilation database for clang tooling.
 - [bash](https://www.gnu.org/software/bash/bash.html) - The GNU Bourne Again shell.
 - [git](https://www.git-scm.com/) - Distributed version control system
 - [htop](https://htop.dev/) - Interactive process viewer.
 - [ccls](https://github.com/MaskRay/ccls) - C/C++/ObjC language server supporting cross references, hierarchies, completion and semantic highlighting.
+- [clangd](https://clangd.llvm.org/) - clangd is a language server, and provides C++ IDE features to editors.
 - [cpplint](https://github.com/cpplint/cpplint) - Static code checker for C++.
 - [coc.nvim](https://github.com/neoclide/coc.nvim) - Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
   - [coc-json](https://github.com/neoclide/coc-json) - Json language extension for coc.nvim.
@@ -61,13 +66,10 @@ $ docker exec -u ide -it gcc bash
 
 - [Modern C++ development in (Neo)vim](https://chmanie.com/post/2020/07/17/modern-c-development-in-neovim/)
 - [Configure coc.nvim for C/C++ Development](https://ianding.io/2019/07/29/configure-coc-nvim-for-c-c++-development/)
+- [Set up for C++/C Development in Neovim](https://jdhao.github.io/2020/04/19/nvim_cpp_and_c_completion/)
 
 ## Status
 
+- [ccls](https://github.com/MaskRay/ccls) - A C++ project, verified by both ccls and clangd. See [ccls project](../../wiki/ccls-project) for detail.
+
 - Working on detail guide.
-
-Waiting for the real project verification. Currently try to figure out how to perform [ccls](https://github.com/MaskRay/ccls/wiki/Project-Setup#ccls-file) project setup. Try to verifiy it with the following projects:
-
-- [ccls](https://github.com/MaskRay/ccls) c project.
-- [grpc/grpc](https://github.com/grpc/grpc) c/c++ project.
-- [martinezjavier/ldd3](https://github.com/martinezjavier/ldd3) c project.

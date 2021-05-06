@@ -1,0 +1,9 @@
+{
+	"clangd.enabled": true,
+	"clangd.arguments": ["--log=verbose","--background-index", "--clang-tidy", "-j=3"],
+	"clangd.semanticHighlighting": true,
+	"markdownlint.config": {
+		"default":true,
+    		"line_length": false
+	}
+}
