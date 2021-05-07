@@ -26,7 +26,7 @@ Both GCC and CLANG is ready for use. The default compiler is GCC. Both clangd an
   - [coc-snippets](https://github.com/neoclide/coc-snippets) - Snippets solution for coc.nvim.
   - [coc-pairs](https://github.com/neoclide/coc-pairs) - Basic auto pairs extension of coc.nvim.
   - [coc-markdownlint](https://github.com/fannheyward/coc-markdownlint) - markdownlint extension for coc.nvim.
-- [protoc - protocol buffer compiler](https://developers.google.com/protocol-buffers/docs/downloads)
+- [protoc](https://developers.google.com/protocol-buffers/docs/downloads) - protocol buffer compiler
 - [fzf](https://github.com/junegunn/fzf) - A command-line fuzzy finder.
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - ripgrep recursively searches directories for a regex pattern while respecting your gitignore.
 - [crusoexia/vim-monokai](https://github.com/crusoexia/vim-monokai) - Refined Monokai color scheme for vim, inspired by Sublime Text.
@@ -68,8 +68,16 @@ $ docker exec -u ide -it gcc bash
 - [Configure coc.nvim for C/C++ Development](https://ianding.io/2019/07/29/configure-coc-nvim-for-c-c++-development/)
 - [Set up for C++/C Development in Neovim](https://jdhao.github.io/2020/04/19/nvim_cpp_and_c_completion/)
 
+## Notes
+
+If you want to use docker to develop kernel module or device driver. Don't do that. Use virtualbox or vmware instead.
+
+- [Is it possible to use a kernel module built from within Docker?](https://stackoverflow.com/questions/54479529/is-it-possible-to-use-a-kernel-module-built-from-within-docker)
+- [docker linux container doesn't support driver development?](https://stackoverflow.com/questions/42921503/docker-linux-container-doesnt-support-driver-development)
+- [Containers are not VMs](https://www.docker.com/blog/containers-are-not-vms/)
+
 ## Status
 
-- [ccls](https://github.com/MaskRay/ccls) - A C++ project, verified by both ccls and clangd. See [ccls project](../../wiki/ccls-project) for detail.
-
 - Working on detail guide.
+- The gccIDE is verified by [ccls](https://github.com/MaskRay/ccls) - A C++ project, by both ccls and clangd. See [ccls project](../../wiki/ccls-project) for detail.
+- The gccIDE is verified by [ldd3](https://github.com/martinezjavier/ldd3) - A C project, See [ldd3 project](../../wiki/ldd3-project) for detail.
