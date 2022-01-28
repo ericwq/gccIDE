@@ -1,3 +1,7 @@
+# Deprecated
+
+`gccIDE` is merged to [nvide](https://github.com/ericwq/nvide). 
+
 # gccIDE
 
 A neovim based GCC/G++ IDE, based on [alpine](https://www.alpinelinux.org/) linux, c/c++ language server enabled, syntax highlight IDE. Just pull docker image from [hub.docker.com](https://hub.docker.com/r/ericwq057/goccide) and run it.
